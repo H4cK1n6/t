@@ -1,0 +1,13 @@
+{
+    "name": "TramAcad",
+    "alias": "tramacad",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\TramAcad\\Providers\\TramAcadServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
