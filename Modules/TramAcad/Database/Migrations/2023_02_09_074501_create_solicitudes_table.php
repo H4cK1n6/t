@@ -24,7 +24,7 @@ class CreateSolicitudesTable extends Migration
 
             $table->string('detalle-solicitud');
                     $table->date('fecha_envio');
-            $table->string('estado-solicitud');
+            $table->string('estado_solicitud');
 
             $table->timestamps();
         });

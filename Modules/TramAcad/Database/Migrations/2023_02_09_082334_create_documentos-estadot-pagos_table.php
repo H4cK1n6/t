@@ -20,23 +20,23 @@ class CreateDocumentosEstadotPagosTable extends Migration
 
             $table->foreign('solicitud_id')->references('id')->on('solicitudes')->onDelete('cascade');
 
-            $table->string('nombre-documento');
+            $table->string('nombre_documento');
             $table->string('archivo');
             $table->date('fecha_subida');
 
             $table->timestamps();
         });
 
-        Schema::create('estado-tramites', function (Blueprint $table) {
+        Schema::create('estadotramites', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('tramite_id');
 
             $table->foreign('tramite_id')->references('id')->on('tramites')->onDelete('cascade');
 
-            $table->string('descrip-estado');
+            $table->string('descrip_estado');
             $table->date('fecha_estado');
-            $table->string('responsable-estado');
+            $table->string('responsable_estado');
 
             $table->timestamps();
         });
@@ -64,7 +64,7 @@ class CreateDocumentosEstadotPagosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('documentos');
-        Schema::dropIfExists('estado-tramites');
+        Schema::dropIfExists('estadotramites');
         Schema::dropIfExists('pagos');
     }
 }

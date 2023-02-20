@@ -18,15 +18,15 @@ class CreateTramitesTable extends Migration
 
             $table->unsignedBigInteger('solicitud_id');
             $table->unsignedBigInteger('unidad_id');
-            $table->unsignedBigInteger('tipo-tramite_id');
+            $table->unsignedBigInteger('tipotramite_id');
 
             $table->foreign('solicitud_id')->references('id')->on('solicitudes')->onDelete('cascade');
             $table->foreign('unidad_id')->references('id')->on('unidades')->onDelete('cascade');
-            $table->foreign('tipo-tramite_id')->references('id')->on('tipo-tramites')->onDelete('cascade');
+            $table->foreign('tipotramite_id')->references('id')->on('tipotramites')->onDelete('cascade');
 
             $table->date('fecha_inicio');
             $table->string('descripcion');
-            $table->string('estado-actual');
+            $table->string('estado_actual');
 
             $table->timestamps();
         });

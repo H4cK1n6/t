@@ -9,10 +9,14 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+/*
     public function tramites(){
         return $this->hasMany(Tramite::class,'id');
     }
+*/
+    public function solicitudes(){
+		return $this->hasMany('Modules\TramAcad\Entities\Solicitud');
+	}
 
     /**
      * The attributes that are mass assignable.
