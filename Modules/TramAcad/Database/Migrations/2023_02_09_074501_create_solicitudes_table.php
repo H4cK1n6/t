@@ -22,7 +22,7 @@ class CreateSolicitudesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('unidad_id')->references('id')->on('unidades')->onDelete('cascade');
 
-            $table->string('detalle-solicitud');
+            $table->string('detalle_solicitud');
                     $table->date('fecha_envio');
             $table->string('estado_solicitud');
 

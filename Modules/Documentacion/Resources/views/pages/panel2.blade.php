@@ -35,6 +35,26 @@
         <!-- begin panel-body -->
         <div class="panel-body">
             <h2>Panel</h2>
+
+            {{-- <form action="{{ route('botones.solicitar') }}" method="GET">
+                <button type="submit">Solicitar</button>
+            </form>
+        
+            <form action="{{ route('botones.verificar') }}" method="GET">
+                <button type="submit">Verificar</button>
+            </form> --}}
+
+            <form class="form-inline" action="/mi-ruta" method="POST">
+                @csrf
+            
+                <div class="form-group">
+                    <label for="nombre" class="mr-2">Nombre:</label>
+                    <input type="text" class="form-control mr-2" id="nombre" name="nombre">
+                </div>
+            
+                <button type="submit" class="btn btn-primary" name="accion" value="guardar">Guardar</button>
+                <button type="submit" class="btn btn-danger" name="accion" value="borrar">Borrar</button>
+            </form>
         </div>
         <!-- end panel-body -->
     </div>

@@ -14,7 +14,7 @@ class DocumentacionController extends Controller
      */
     public function index()
     {
-        return view('documentacion::index');
+        return view('TramAcad::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class DocumentacionController extends Controller
      */
     public function create()
     {
-        return view('documentacion::create');
+        return view('TramAcad::create');
     }
 
     /**
@@ -43,7 +43,7 @@ class DocumentacionController extends Controller
      */
     public function show($id)
     {
-        return view('documentacion::show');
+        return view('TramAcad::show');
     }
 
     /**
@@ -53,7 +53,7 @@ class DocumentacionController extends Controller
      */
     public function edit($id)
     {
-        return view('documentacion::edit');
+        return view('TramAcad::edit');
     }
 
     /**

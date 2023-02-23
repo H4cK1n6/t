@@ -37,15 +37,30 @@
             <h2>Panel</h2>
             <div class="container row">
 
-                {{-- <h1>Botones</h1> --}}
-        
-                <form action="{{ route('formularios.solicitar') }}" method="GET" class="col-md-6 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Solicitar Trámite</button>
-                </form>
-                <br><br>
-                <form action="{{ route('solicitudesUsuario') }}" method="GET" class="col-md-6 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success">Consultar estado de trámites</button>
-                </form>
+                <h1>Pagina de solicitudes</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tramite</th>
+                                        <th>Solicitante</th>
+                                        <th>Unidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($solicitudes as $solicitud)
+                                    <tr>
+                                        <td>{{ $solicitud->detalle_solicitud }}</td>
+                                        <td>{{ $solicitud->user_id }}</td>
+                                        <td>{{ $solicitud->unidad_id }}</td>
+                                    </tr>
+                                    @endforeach						
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
         
             </div>
             <table class="table table-striped table-hover">
@@ -92,3 +107,30 @@
     {{--    <script src="/assets/js/demo/table-manage-buttons.demo.js"></script>--}}
     <!-- ================== END PAGE LEVEL JS ================== -->
 @endpush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- @section('title','Solicitudes') --}}
+
+{{-- @section('content') --}}
+{{--     @yield('solicitudes') --}}
+    
+{{-- @endsection --}}

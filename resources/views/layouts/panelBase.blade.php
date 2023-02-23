@@ -13,17 +13,17 @@
 @section('content')
     <!-- begin breadcrumb -->
     <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item"><a href="{{ url("/sistema/panel") }}">Principal</a></li>
+        <li class="breadcrumb-item"><a href="{{ url("/sistema/panel") }}">@yield('panel_title')</a></li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header"><i class="fas fa-address-book fa-fw"></i> Tramites <small></small></h1>
+    <h1 class="page-header"><i class="fas fa-address-book fa-fw"></i> Tramites Academicos <small></small></h1>
     <!-- end page-header -->
     <!-- begin panel -->
     <div class="panel panel-inverse">
         <!-- begin panel-heading -->
         <div class="panel-heading">
-            <h4 class="panel-title">Panel principal</h4>
+            <h4 class="panel-title">@yield('panel_title')</h4>
             <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                 {{--                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>--}}
@@ -34,37 +34,7 @@
         <!-- end panel-heading -->
         <!-- begin panel-body -->
         <div class="panel-body">
-            <h2>Panel</h2>
-            <div class="container row">
-
-                {{-- <h1>Botones</h1> --}}
-        
-                <form action="{{ route('formularios.solicitar') }}" method="GET" class="col-md-6 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Solicitar Trámite</button>
-                </form>
-                <br><br>
-                <form action="{{ route('solicitudesUsuario') }}" method="GET" class="col-md-6 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success">Consultar estado de trámites</button>
-                </form>
-        
-            </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th>ID</th>
-                    <th>USUARIO</th>
-                    <th>TRAMITE</th>
-                </thead>
-                <tbody>
-                   {{--  @foreach ($tramites as $tramite)
-                    <tr>
-                        <td>{{$tramite->id ?? ''}}</td>
-                        <td>{{$tramite->users->name}}</td>
-                        <td>{{$tramite->id_tipotramite}}</td>
-                        {{-- <td>{{$tramite->tipo->descripcion}}</td> 
-                    </tr>
-                    @endforeach --}}
-                </tbody>
-            </table>
+           @yield('solicitudes')
         </div>
         <!-- end panel-body -->
     </div>

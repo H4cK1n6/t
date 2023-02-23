@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 /* Route::get('/documentacion', 'DocController@index')->name('documentacion'); */
-Route::get('/documentacion','DocController@index');
+Route::get('/TramAcad','TramAcadController@index');
 
 Route::get('bootstrap-4', function(){
     return view('pages.bootstrap-4');

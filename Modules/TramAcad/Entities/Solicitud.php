@@ -10,6 +10,8 @@ class Solicitud extends Model
     //use HasFactory;
 
     protected $fillable = [];
+
+    protected $table = "solicitudes";
     
     protected static function newFactory()
     {

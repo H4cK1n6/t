@@ -10,6 +10,8 @@ class Unidad extends Model
     //use HasFactory;
 
     protected $fillable = [];
+
+    protected $table = "unidades";
     
     protected static function newFactory()
     {

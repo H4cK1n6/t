@@ -5,6 +5,7 @@ namespace Modules\TramAcad\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\User;
 
 class TramAcadController extends Controller
 {
@@ -14,7 +15,8 @@ class TramAcadController extends Controller
      */
     public function index()
     {
-        return view('tramacad::pages.panel2');
+        $tramites = User::all();
+        return view('tramacad::pages.panel2',$tramites);
     }
 
     /**

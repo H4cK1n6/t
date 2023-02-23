@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Panel 2')
+@section('title', 'Panel')
 
 @push('css')
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
@@ -34,37 +34,14 @@
         <!-- end panel-heading -->
         <!-- begin panel-body -->
         <div class="panel-body">
-            <h2>Panel</h2>
-            <div class="container row">
+            <h2>verificar trámites
+                @guest
+                @else
+                {{ Auth::user()->name }}
+                @endguest
 
-                {{-- <h1>Botones</h1> --}}
-        
-                <form action="{{ route('formularios.solicitar') }}" method="GET" class="col-md-6 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Solicitar Trámite</button>
-                </form>
-                <br><br>
-                <form action="{{ route('solicitudesUsuario') }}" method="GET" class="col-md-6 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success">Consultar estado de trámites</button>
-                </form>
-        
-            </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th>ID</th>
-                    <th>USUARIO</th>
-                    <th>TRAMITE</th>
-                </thead>
-                <tbody>
-                   {{--  @foreach ($tramites as $tramite)
-                    <tr>
-                        <td>{{$tramite->id ?? ''}}</td>
-                        <td>{{$tramite->users->name}}</td>
-                        <td>{{$tramite->id_tipotramite}}</td>
-                        {{-- <td>{{$tramite->tipo->descripcion}}</td> 
-                    </tr>
-                    @endforeach --}}
-                </tbody>
-            </table>
+
+            </h2>
         </div>
         <!-- end panel-body -->
     </div>
