@@ -17,29 +17,23 @@ class Tramite extends Model
     }
 
     //Uno a uno
-    public function Pago(){		
+    public function pago(){		
 		return $this->hasOne('Modules\TramAcad\Entities\Pago');
 	}
 
     //Uno a Uno inversa
 
-    public function Tipotramite(){
-		//$user = User::find($this->user_id);
-		//return $user;
-		return $this->belongsTo('Modules\TramAcad\Entities\Tipotramite');
-	}
-
-    public function Solicitud(){
+    public function solicitud(){
 		return $this->belongsTo('Modules\TramAcad\Entities\Solicitud');
 	}
 
     //Uno a muchos
 
-    public function Unidad(){
+    public function unidad(){
 		return $this->belongsTo('Modules\TramAcad\Entities\Unidad');
 	}
 
-    public function Estadotramite(){
-		return $this->belongsTo('Modules\TramAcad\Entities\Estadotramite');
+    public function estadotramite(){
+		return $this->hasMany('Modules\TramAcad\Entities\Estadotramite');
 	}
 }

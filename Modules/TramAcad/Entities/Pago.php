@@ -18,7 +18,7 @@ class Pago extends Model
 
     //uno a uno a la inversa
 
-    public function Tramite(){
+    public function tramite(){
 		return $this->belongsTo('Modules\TramAcad\Entities\Tramite');
 	}
 }

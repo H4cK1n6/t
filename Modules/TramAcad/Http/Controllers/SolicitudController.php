@@ -8,10 +8,12 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 use Modules\TramAcad\Entities\Solicitud;
 use Modules\TramAcad\Entities\Unidad;
 use Modules\TramAcad\Entities\Tipotramite;
+use Modules\TramAcad\Entities\Tramite;
 
 use function PHPSTORM_META\type;
 
@@ -46,22 +48,25 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request -> all();
-       
-        //dd($request->session(auth('user')));
+        $validacion = $request->validate([
+            'item_id' => 'required',
+            'unidad_id' => 'required'
+        ]);
+
         $user = Auth::id();
         $detalle=Tipotramite::find($request->input('item_id'));
-        //dd($user);
+        //dd($request->input('item_id'));
         $solicitud = new Solicitud();
         $solicitud->user_id = $user;
         $solicitud->unidad_id = $request->unidad_id;
         //dd($detalle->nombre_tramite);
-        $solicitud->detalle_solicitud = $detalle->nombre_tramite;
+        
         $solicitud->fecha_envio = date('Y-m-d H:i:s');
         $solicitud->estado_solicitud = "Pendiente";
         $solicitud->save();
 
         //return $solicitud;
+        echo "solicitud registrada..."; 
 
         return redirect()->route('solicitudesUsuario');
     }
@@ -80,7 +85,8 @@ class SolicitudController extends Controller
         $usuarios = (new \Modules\TramAcad\Entities\Solicitud)::all()->where('user_id','=',Auth::id());
         foreach($usuarios as $dato)
             $datos = $dato->user->name;
-        
+            dd($datos)
+;        
         return view('tramacad::solicitudes.solicitudesUsuario',compact('usuarios'));
     }
 
@@ -118,7 +124,16 @@ class SolicitudController extends Controller
     //////////////////////////
     public function seleccionarTramite()
     {
-        $items = Tipotramite::all();
+
+        $items = Tipotramite::whereNotIn('id', function ($query) {
+            $query->select('tipotramite_id')
+                ->from('solicitudes');
+        })->get();
+
+        //dd($tiposNoSolicitados);
+
+        $items = Tipotramite::select('id','nombre_tramite')->get();
+       
         $unidades = Unidad::all();
         //dd($items->nombre_tramite);
         return view('tramacad::formularios.solicitar', compact('items','unidades'));

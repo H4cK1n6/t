@@ -18,7 +18,7 @@ class Estadotramite extends Model
 
     //Uno a muchos
 
-    public function Tramite(){
+    public function tramite(){
 		return $this->belongsTo('Modules\TramAcad\Entities\Tramite');
 	}
 }

@@ -11,6 +11,16 @@
 @endpush
 
 @section('content')
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
     <!-- begin breadcrumb -->
     <ol class="breadcrumb float-xl-right">
         <li class="breadcrumb-item"><a href="{{ url("/sistema/panel") }}">Principal</a></li>
@@ -44,14 +54,14 @@
             <form action="{{ route('formularios.store') }}" method="POST" class="">
                 @csrf
                 <select name="item_id" class="form-control">
-                        <option selected>Seleccione tipo de trámite</option>
+                        <option value="">Seleccione tipo de trámite</option>
                     @foreach($items as $item)
                         <option value="{{ $item->id }}">{{ $item->nombre_tramite }}</option>
                     @endforeach
                 </select>
                 <div class="mb-3"></div>
                 <select name="unidad_id" class="form-control">
-                        <option selected>Seleccione Unidad</option>
+                        <option value="">Seleccione Unidad</option>
                     @foreach($unidades as $unidad)
                         <option value="{{ $unidad->id }}">{{ $unidad->nombre_unidad }}</option>
                     @endforeach

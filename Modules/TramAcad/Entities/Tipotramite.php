@@ -15,19 +15,12 @@ class Tipotramite extends Model
     {
         //return \Modules\TramAcad\Database\factories\TipotramiteFactory::new();
     }
-
-    //Uno a Uno
-
-    public function tramite(){
-		//$profile = Profile::where('user_id', $this->id)->first();
-		//return $profile;
-		
-		//return $this->hasOne(Profile::class);
-		
-		return $this->hasOne('Modules\TramAcad\Entities\Tramite');
+    
+    public function solicitudes(){
+      return $this->hasMany('Modules\TramAcad\Entities\Solicitud');
 	}
 
-    public function estados(){
+    public function estado(){
 		return $this->belongsToMany('Modules\TramAcad\Entities\Estado');
 	}
 }

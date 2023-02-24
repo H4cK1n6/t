@@ -17,13 +17,15 @@ class CreateSolicitudesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('unidad_id');
+            $table->unsignedBigInteger('tipotramite_id')->nullable();
+            $table->unsignedBigInteger('unidad_id');            
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('tipotramite_id')->references('id')->on('tipotramites')->onDelete('cascade');
             $table->foreign('unidad_id')->references('id')->on('unidades')->onDelete('cascade');
 
-            $table->string('detalle_solicitud');
-                    $table->date('fecha_envio');
+            $table->string('detalle_solicitud')->nullable();
+            $table->date('fecha_envio');
             $table->string('estado_solicitud');
 
             $table->timestamps();

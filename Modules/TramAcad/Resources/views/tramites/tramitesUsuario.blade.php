@@ -2,7 +2,7 @@
 {{-- @include('pages.panelBase') --}}
 @extends('layouts.panelBase')
 
-@section('panel_title', 'Solicitudes')
+@section('panel_title', 'Tramites usuario')
 
 @section('solicitudes')
     <div class="container row">
@@ -15,15 +15,15 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Tramite</th>
+                                <th>NombreTramite</th>
                                 <th>Solicitante</th>
-                                <th>Unidad</th>
+                                <th>Estado Actual</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($usuarios as $solicitud)
                             <tr>
-                                <td>{{ $solicitud->id }}</td>
+                                <td>{{ $solicitud->detalle_solicitud }}</td>
                                 <td>{{ $solicitud->user->name}}</td>
                                 <td>{{ $solicitud->Unidad->nombre_unidad }}</td>
                             </tr>

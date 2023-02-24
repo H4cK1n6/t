@@ -20,8 +20,8 @@ class Solicitud extends Model
 
     //Uno a Uno
 
-    public function tramite(){		
-		return $this->hasOne('Modules\TramAcad\Entities\Tramite');
+    public function tramites(){		
+		return $this->hasMany('Modules\TramAcad\Entities\Tramite');
 	}
 
     //Uno a muchos
@@ -29,11 +29,15 @@ class Solicitud extends Model
 		return $this->belongsTo('App\User');
 	}
 
-    public function Unidad(){
+    public function unidad(){
 		return $this->belongsTo('Modules\TramAcad\Entities\Unidad');
 	}
 
-    public function Documento(){
-		return $this->belongsTo('Modules\TramAcad\Entities\Documento');
-	}
+    public function documento(){
+		return $this->hasMany('Modules\TramAcad\Entities\Documento');
+	  }
+
+    public function tipotramite(){
+      return $this->belongsTo('Modules\TramAcad\Entities\Tipotramite');
+    }
 }

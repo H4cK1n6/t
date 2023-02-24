@@ -21,7 +21,7 @@ class RelacionController extends Controller
     public function index()
     {
         $tramites = Tramite::all();
-        dd($tramites.a );
+        dd($tramites);
         return view('tramacad::pages.panel2', compact('tramites'));
     }
 
